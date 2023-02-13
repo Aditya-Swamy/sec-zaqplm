@@ -12,26 +12,26 @@ const int MSG_SIZE = 2000;
 
 int main()
 {
-   UdpSocket udpSock(PORT);
-   UdpSocket reciever(RECV_PORT);
-   reciever.setDestAddress(CLIENT);
+    UdpSocket udpSock(PORT);
+    UdpSocket reciever(RECV_PORT);
+    reciever.setDestAddress(CLIENT);
 
-   int msg[1];
+    int msg[1];
 
-   // udpSock.recvFrom((char*)msg, 4);
-   // reciever.setSrcAddr(udpSock.getSrcAddr());
-   // if (reciever.sendTo((char*)msg, 4) < 0) {
-   //    cerr << "error sending msg";
-   // }
-   // cout << msg[0] << endl;
+    // udpSock.recvFrom((char*)msg, 4);
+    // reciever.setSrcAddr(udpSock.getSrcAddr());
+    // if (reciever.sendTo((char*)msg, 4) < 0) {
+    //    cerr << "error sending msg";
+    // }
+    // cout << msg[0] << endl;
 
-   while (true) {
-      while (udpSock.pollRecvFrom()) {
-         udpSock.recvFrom((char*)msg, 4);
-         if (reciever.sendTo((char*)msg, 4) < 0) {
-            cerr << "error sending msg" << endl;
-         }
-         cout << msg[0] << endl;
-      }
-   }
+    while (true) {
+        while (udpSock.pollRecvFrom()) {
+            udpSock.recvFrom((char*)msg, 4);
+            if (reciever.sendTo((char*)msg, 4) < 0) {
+                cerr << "error sending msg" << endl;
+            }
+            cout << msg[0] << endl;
+        }
+    }
 }
